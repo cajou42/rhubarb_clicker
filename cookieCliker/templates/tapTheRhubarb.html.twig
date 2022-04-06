@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} rhubarb clicker {% endblock %}
+
+{% block body %}
+
+    <h1 class="text-3xl font-bold self-center mb-2">Tap to make point !</h1>
+
+    {# {{ dump(app.user) }} #}
+
+    <div x-data="rhubarb({{ user.score }},{{ user.doubletg ?: '0' }},{{ user.timer ?: '0' }},{{ user.booster ?: '0' }})" class="flex flex-col space-y-4" >
+        <img src="{{ asset("image/img.png") }}" class="self-center h-52 w-52" x-on:click="increment" x-data="time_increment">
+        <span x-ref="nb" class="self-center">{{ user.getScore() }}</span>
+        <span x-ref="boost_time" class="self-center">no booster</span>
+        <div class="self-center">
+            <button @click="save" class="mr-2 bg-red-200 hover:bg-red-500 transition duration-500 rounded-md h-10 w-28 shadow-sm">quit and save</button>
+            <button @click="boost" x-ref="booster_button" class="ml-2 bg-red-200 hover:bg-red-500 transition duration-500 rounded-md h-10 w-28 shadow-sm">Booster !</button>
+        </div>
+    </div>
+
+    <div class="mt-64 mb-1 ml-3">
+        <button href="{{ path('shop')}}" class="bg-red-200 hover:bg-red-500 transition duration-500 rounded-md h-10 w-28 shadow-sm">shop upgrade</button>
+    </div>
+
+{% endblock %}
