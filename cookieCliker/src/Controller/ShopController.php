@@ -20,7 +20,6 @@ class ShopController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
-        var_dump($user->getScore());
         return $this->render('shop.html.twig', [
             'user' => $user,
         ]);

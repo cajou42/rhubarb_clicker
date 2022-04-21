@@ -5,7 +5,6 @@ export default (nbRhubarb = 0, double = false, timer = false, booster = false)=>
     booster: booster,
 
     active_double(){
-        console.log(nbRhubarb)
         if(nbRhubarb >= 10000 && !double){
             double = true;
             nbRhubarb = nbRhubarb - 10000;
@@ -18,7 +17,6 @@ export default (nbRhubarb = 0, double = false, timer = false, booster = false)=>
             method: "POST",
             body: JSON.stringify({count: nbRhubarb})
         })
-        console.log(nbRhubarb)
     },
 
     active_timer(){
@@ -50,12 +48,4 @@ export default (nbRhubarb = 0, double = false, timer = false, booster = false)=>
             body: JSON.stringify({count: nbRhubarb})
         })
     },
-
-    /*save_bonus() {
-        fetch("/update", {
-            method: "POST",
-            body: JSON.stringify({sdouble: double, stimer: timer, sbooster: booster, count: nbRhubarb})
-        }).then(response => console.log(response))
-            .catch(err => console.error(err))
-    }*/
 })

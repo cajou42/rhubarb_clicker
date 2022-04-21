@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} user profile {% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl font-bold self-center mb-2"> account settings</h1>
+
+    <div class="p-4 self-center space-y-4 bg-slate-200 rounded-md shadow-sm mt-44">
+        {{ form_start(SettingsForm,{
+            attr: {
+                class: "flex flex-col space-y-4"
+            }
+        }) }}
+        {{ form_row(SettingsForm.email, {
+            label: 'Email : '
+        }) }}
+        {{ form_row(SettingsForm.plainPassword, {
+            label: 'Password : '
+        }) }}
+        <button type="submit" class="mx-auto bg-red-200 hover:bg-red-500 transition duration-500 rounded-md h-10 w-28 shadow-sm">Register</button>
+
+        <button class="mx-auto bg-red-200 hover:bg-red-500 transition duration-500 rounded-md h-10 w-28 shadow-sm">
+            <a href="{{ path('user_remove') }}">delete account</a>
+        </button>
+
+        {{ form_end(SettingsForm) }}
+
+    </div>
+
+{% endblock %}
